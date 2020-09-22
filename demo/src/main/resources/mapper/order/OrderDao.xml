@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.shixi.demo.order.dao.OrderDao">
+    <select id="getOrder" resultType="com.shixi.demo.order.entity.Order">
+        select * from `order` where username = #{username}
+    </select>
+    <select id="selectOrder" resultType="com.shixi.demo.order.entity.Order">
+        select * from `order` where (username = #{username} and complete = #{complete})
+    </select>
+    <update id="updateGps" parameterType="com.shixi.demo.order.entity.Order">
+        UPDATE `order`
+        SET
+        longitude = #{longitude},
+        latitude = #{latitude},
+        complete = 1
+        WHERE
+            orderid = #{orderid}
+    </update>
+</mapper>

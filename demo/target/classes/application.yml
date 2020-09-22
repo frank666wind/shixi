@@ -1,0 +1,16 @@
+server:
+  port: 8080  #tomcat�˿�
+  servlet:
+    context-path: /
+
+spring: #springboot������
+  datasource: #��������Դ
+    #127.0.0.1Ϊ�������Ե�ip��3306��mysql�Ķ˿ںš�serverTimezone�Ƕ���ʱ�����ճ��ͺã�mysql�߰汾��Ҫ������Щ����
+    #useSSLҲ��ĳЩ�߰汾mysql��Ҫ����û����SSL����
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root  #���ݿ��û�����rootΪ����Ա
+    password: root1234 #�����ݿ��û�������
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:  #mybatis������
+  mapper-locations: classpath:mapper/**/*.xml #ָ��mapper�������ļ���·����mapper�ļ����µ����� xml�ļ�

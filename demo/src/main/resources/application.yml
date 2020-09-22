@@ -1,0 +1,16 @@
+server:
+  port: 8080  #tomcat端口
+  servlet:
+    context-path: /
+
+spring: #springboot的配置
+  datasource: #定义数据源
+    #127.0.0.1为本机测试的ip，3306是mysql的端口号。serverTimezone是定义时区，照抄就好，mysql高版本需要定义这些东西
+    #useSSL也是某些高版本mysql需要问有没有用SSL连接
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root  #数据库用户名，root为管理员
+    password: root1234 #该数据库用户的密码
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:  #mybatis的配置
+  mapper-locations: classpath:mapper/**/*.xml #指定mapper的配置文件的路径是mapper文件夹下的所有 xml文件
