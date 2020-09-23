@@ -18,6 +18,8 @@ import java.util.List;
 import android.view.View;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
+
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -83,13 +85,23 @@ public class ExpressDetailActivity extends Activity {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
+                                TextView longitudeT = (TextView) findViewById(R.id.gpsG);
+                                TextView latitudeT = (TextView) findViewById(R.id.gpsA);
+                                TextView orderT = (TextView) findViewById(R.id.orderid);
+                                String longitudeS = longitudeT.getText().toString();
+                                String latitudeS = latitudeT.getText().toString();
+                                String orderS = orderT.getText().toString();
+                                longitudeS = longitudeS.replace("经度为：","");
+                                latitudeS = latitudeS.replace("纬度为：","");
+                                orderS = orderS.replace("订单号：","");
                                 try {
+
                                     String json = "{\n" +
-                                            "    \"longitude\":116.47921808912027,\n" +
-                                            "    \"latitude\":39.891891891891895,\n" +
-                                            "    \"orderid\":4\n" +
+                                            "    \"longitude\":"+longitudeS+",\n" +
+                                            "    \"latitude\":"+latitudeS+",\n" +
+                                            "    \"orderid\":"+orderS+"\n" +
                                             "}";
-                                    //String json = message;
+                                    ToastDisplay(json);
 
                                     //创建http客户端
                                     OkHttpClient client = new OkHttpClient();
